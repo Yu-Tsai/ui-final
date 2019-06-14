@@ -1,0 +1,68 @@
+.member{
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+.member-viewport{
+    height: 550px;
+    width: 800px;
+    border: 2px solid #d9dee0;
+    border-radius: 10px;
+    margin: 130px 0px;
+    flex-shrink: 0;
+    display: flex;
+}
+.member-img{
+    height: 100%;
+    width: 40%;
+    background: url("menu/member-bg.png");
+    background-size: 100% 100%;
+    border-radius: 8px 0px 0px 8px;
+}
+.member-content{
+    height: 100%;
+    width: 60%;
+    background: #ffffff;
+    padding: 70px 0px;
+    border-radius: 0px 8px 8px 0px;
+}
+.member-content-header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Fredoka One';
+    font-size: 27px;
+    color: #cdcdcd;
+}
+#login-trigger{
+    width: 100px;
+    text-align: right;
+    margin-right: 30px;
+    color: #cdcdcd;
+}
+#new-user-trigger{
+    width: 150px;
+    text-align: left;
+    margin-left: 30px;
+    color: #ad1b2e;
+}
+#login-trigger:hover, #new-user-trigger:hover{
+    cursor: pointer;
+}
+.member-input{
+    padding: 20px calc((480px - 300px)/2);
+    color: #bbbaba;
+    font-family: 'Arial';
+    height: 100%;
+    line-height: 30px;
+}
+.member-input > div{
+    height: 80px
+}
+.member-input input{
+    height: 30px;
+    width: 300px;
+    outline: none;
+    border: 2px solid #f2f2f3;
+    padding: 0px 10px;
+}

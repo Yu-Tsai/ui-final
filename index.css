@@ -1,0 +1,222 @@
+:root{
+    --fullheight: 100vh;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select: none;
+}
+body{
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width:8px;
+    border-radius:3px;
+    background: transparent;
+}
+body::-webkit-scrollbar-thumb{
+    border-radius:5px;
+    background:rgba(0, 0, 0, 0);
+}
+.page0, .page1, .page2, .menu, .location, .order-status, .member{
+    height: var(--fullheight);  /*this property should be corrected*/
+    width:100vw;
+}
+.space{
+    height: 60px;
+}
+.page0{
+    background:url("index-object/page0bg.svg");
+    background-size: cover;
+    text-align: center;
+    padding: 130px 0px;
+}
+.page0 img{
+    height: 100%;
+}
+.page1{
+    background: #ffffff;
+    justify-content: center;
+    padding: 120px 0px;
+}
+.popular-header{
+    text-align: center;
+}
+.popular-header h2{
+    font-family: 'Bitter';
+    font-weight: bold;
+    color: #554f4c;
+    font-size: 45px;
+    line-height: 20px; /*setting this property to narrow the distance between h2 and p*/
+
+}
+.popular-header p{
+    font-family: 'Calibri';
+    color: #554f4c;
+}
+.popular-item-container{
+    display: flex;
+    justify-content: space-around;
+    padding: 70px;
+    height: 100%; /*the key to make page1 responsive*/
+}
+.popular-item{
+    height: 100%;
+    width: 25%;
+    background: grey;
+}
+.popular-item img{
+    width: 100%;
+}
+.page2{
+    background:url("index-object/page2bg.svg");
+    background-size: cover;
+    padding: 120px 0px;
+}
+.intro-header{
+    text-align: center;
+}
+.intro-header h2{
+    font-family: 'Bitter';
+    color:#ca4f48;
+    font-size: 45px;
+    line-height: 20px; /*setting this property to narrow the distance between h2 and p*/
+}
+.intro-header p{
+    font-family: 'Calibri';
+    color:#8a5d4b;
+}
+.intro-steps{
+    margin-top: 3;
+    display: flex;
+    justify-content: center;
+}
+.intro-step1, .intro-step2, .intro-step3{
+    text-align: center;
+    color:#646665;
+    font-family: 'Cuprum';
+    font-weight: bold;
+    font-size: 30px;
+}
+.intro-step1 img, .intro-step2 img, .intro-step3 img{
+    width: 150px;
+}
+.intro-step1, .intro-step3{
+    margin: 6% 0%;
+}
+.intro-step2{
+    margin-top:14%;
+}
+.arrow1 img, .arrow2 img{
+    width: 140px;
+}
+.arrow1, .arrow2{
+    margin:10% 3%;
+}
+.info{
+    background:#3a3a3a;
+    width:100vw;
+    height: calc(var(--fullheight)/4);
+    padding: 40px 100px;
+}
+.info-inner{
+    height: 100%;
+    width: 100%;
+    border-bottom: 2px solid #747575;
+    display: flex;
+}
+.bottom-logo{
+    height: 100%; 
+    width: 25%;
+    padding: calc((var(--fullheight)/4 - 80px - 40px)/2) 0px;
+}
+.bottom-logo > img{
+    height: 40px;
+}
+.contact{
+    height: 100%;
+    width: 50%;
+    text-align: left;
+    color: #747575;
+    font-size: 20px;
+    font-family: 'Noto Sans TC';
+    padding: calc((var(--fullheight)/4 - 80px - 20px)/2) 0px;
+}
+.social-media{
+    height: 100%;
+    width: 25%;
+    padding: calc((var(--fullheight)/4 - 80px - 40px)/2) 0px;
+    text-align: right;
+}
+.social-media img{
+    height: 40px;
+    width: 40px;
+}
+#facebook{
+    margin-right: 40px;
+}
+#facebook:hover, #instagram:hover{
+    cursor: pointer;
+}
+@media only screen and (max-height: 700px){
+    :root{
+        --fullheight: 700px; 
+    }
+}
+@media only screen and (max-width: 1200px){
+    .info{
+        padding: 18px 100px;
+    }
+    .info-inner{
+        padding: 0px;
+        height: 100%;
+        flex-direction: column;
+        border-bottom: none;
+    }
+    .info-inner div{
+        text-align: center;
+        height: 33%;
+        width: 100%;
+    }
+    .bottom-logo, .social-media{
+        /*padding: calc(((var(--fullheight)/4 - 50px)*0.33 - 40px)/2) 0px;*/
+        /*the value above is close to zero*/
+        padding: 0px;
+        
+    }
+    .contact{
+        padding: calc(((var(--fullheight)/4 - 50px)*0.33 - 20px)/2);
+    }
+    .social-media{
+        text-align: left;
+    }
+    @media only screen and (max-width: 600px) {
+        .contact{
+            font-size: 14px;
+        }
+    }
+}
+/*
+Total: 11 css files
+
+File 1:navbar.css
+@media Scenerio 1: width > 1/2 of screen width 
+display normally
+
+@media Scenerio 2: width < 1/2 of screen width 
+hide btns into one btn 
+
+File 2: index.css
+@media Scenerio 1: when window width > 1/3 of screen width 
+display content horizontally (fixed height)
+
+@media Scenerio 2: when window width < 1/3 of screen width 
+display content vertically (height adjusted accordingly)
+
+File 3: menu.css
+
+File 4: order-status.css
+
+File 5: store-location.css
+*/

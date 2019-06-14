@@ -1,0 +1,101 @@
+.navsection{
+    top: 0px;
+    /*height: 75px;*/
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(1px 1px 7px rgba(0, 0, 0, 0.7));
+}
+.navbar{
+    height: 60px;
+    width: 100%;
+    background:#bc1f33;
+    display: flex;
+    justify-content: space-between;
+    /*box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.6);*/
+    /*filter: drop-shadow(10px 10px 7px rgba(0, 0, 0, 0.6));*/
+}
+.indicator{
+    height: 15px;
+    width: 100%;
+    display: flex;
+}
+.indicator > div{
+    height: 15px;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+}
+.triangle{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 7.5px 0px 7.5px;
+    border-color: #961e23 transparent transparent transparent;
+}
+.logo{
+    height: 100%;
+    width: 280px;
+    padding: 13px 40px;
+    flex-shrink: 0;
+}
+.logo img{
+    width: 100%;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.6));
+}
+.navbtn{
+    width: calc(100vw - 280px); /*Note: The + and - operators must always be surrounded by whitespace.*/
+    display: flex;
+    justify-content: space-between;
+}
+.navleft{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.navright{
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btnL{
+    height:60px;
+    width:280px;
+    text-align:center;
+    line-height:60px; /*setting this property equal to its parent div*/
+    color:white;
+    font-family: 'Fredoka One'; 
+    font-size:20px;
+    border-left:2px solid #961e23;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+}
+.btnR{
+    height:60px;
+    width:60px;
+    padding:12px;
+    text-align: center;
+}
+.btnR > img{
+    height: 100%;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.6));
+}
+.nav-list{
+    height: 100%;
+    width: 60px;
+    padding: 13px;
+    
+}
+.nav-list > img{
+    height: 100%;
+    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.6));
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+.btnR:hover, .nav-list:hover{
+    background:#961e23;
+    cursor: pointer;
+}
+
