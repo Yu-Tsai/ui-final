@@ -41,6 +41,23 @@ const recommend_item_price=[
     100
 ]
 var payment_term;
+
+const d = new Date();
+const year = d.getFullYear();
+const month = d.getMonth() + 1;
+const date = d.getDate();
+var day = d.getDay();
+const day_name = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+]
+day = day_name[day];
+
 function item(name, num, price){
     this.name= name;
     this.num= num;
@@ -79,7 +96,8 @@ $(document).ready(function(){
         $("#dish-page-trigger0").css("background", "#f1f2f7");
         $("#dish-page1, #dish-page2").hide();
 
-        //$("#checkout-modal").hide();
+        $(".member-input").hide();
+        $("#my-account").hide();
 
         orderbtns= $(".order-btns").detach();
         recommend_orderbtns= $(".recommend-order-btns").detach();
@@ -341,7 +359,7 @@ $(document).ready(function(){
         checked(1);
         $(".step2").hide();
         $(".step3").show();
-        const d= new Date();
+        /*const d= new Date();
         const year= d.getFullYear();
         const month= d.getMonth()+1;
         const date= d.getDate();
@@ -355,7 +373,7 @@ $(document).ready(function(){
             "Friday",
             "Saturday"
         ]
-        day = day_name[day];
+        day = day_name[day];*/
         const hour= d.getHours();
         const minute= d.getMinutes();
         $("#date").html(""+day+","+date+"/"+month+"/"+year+"<br>"+hour+":"+minute+"");
@@ -366,6 +384,9 @@ $(document).ready(function(){
         }
         $("#order-price").html("$"+order_price+"");
     });
+    $("#cancel").on('click', function () {
+        location.reload();
+    })
     /*---step 3 end---*/
     $(".payment-term").hover(function(){
         $(this).css({
@@ -412,13 +433,21 @@ $(document).ready(function(){
     /*---login begin---*/
     $("#login-trigger").click(function(){
         $(this).css({ color: "#ad1b2e" });``
-        member_btn= $("#phone-input, #email-input").detach();
+        /*member_btn= $("#phone-input, #email-input").detach();*/
         $("#new-user-trigger").css({ color: "#cdcdcd" });
+        $(".login-input").show();
+        $(".member-input").hide();
     });
     $("#new-user-trigger").click(function(){
         $(this).css({ color: "#ad1b2e" });
         $("#login-trigger").css({ color: "#cdcdcd" });
-        $(".member-input").append(member_btn);
+        /*$(".member-input").append(member_btn);*/
+        $(".login-input").hide();
+        $(".member-input").show();
     });
+    $("#login-btn").on('click', function () {
+        $(".member-viewport").hide();
+        $("#my-account").show();
+    })
     /*---login end---*/
 });

@@ -38,31 +38,131 @@
     width: 100px;
     text-align: right;
     margin-right: 30px;
-    color: #cdcdcd;
+    color: #ad1b2e;
 }
 #new-user-trigger{
     width: 150px;
     text-align: left;
     margin-left: 30px;
-    color: #ad1b2e;
+    color: #cdcdcd;
 }
 #login-trigger:hover, #new-user-trigger:hover{
     cursor: pointer;
 }
-.member-input{
+#sign-up-btn{
+    height: 40px;
+    width: 105px;
+    margin-left: 190px;
+    cursor: pointer;
+}
+#sign-up-btn div:nth-child(1){
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    width: 40px;
+    background-color: black;
+}
+#sign-up-btn div:nth-child(2){
+    display: inline-block;
+    vertical-align: top;
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+.member-input, .login-input{
     padding: 20px calc((480px - 300px)/2);
     color: #bbbaba;
     font-family: 'Arial';
     height: 100%;
     line-height: 30px;
 }
-.member-input > div{
+.member-input > div, .login-input > div{
     height: 80px
 }
-.member-input input{
+.member-input input, .login-input input{
     height: 30px;
     width: 300px;
     outline: none;
     border: 2px solid #f2f2f3;
     padding: 0px 10px;
+}
+#other-login{
+    height: 100px;
+    width: 300px;
+    border-bottom: 2px solid #f2f2f3;
+    margin-top: 10px;
+}
+#login-btn{
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 140px;
+    background-color: #bc1f33;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+#other-login div:nth-child(2){
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 80px;
+    color: #bbbaba;
+    font-size: 10px;
+    text-align: right;
+}
+#login-google, #login-fb{
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+#login-google{
+    margin: 0 3px 0 2px;
+}
+#login-fb{
+
+}
+#other-login img{
+    height: 100%;
+    width: 100%;
+}
+
+#my-account{
+    height: 550px;
+    width: 800px;
+    border: 2px solid #d9dee0;
+    border-radius: 10px;
+    margin: 130px 0px;
+    padding: 50px 200px;
+}
+#my-account #my-account-title{
+    height: 60px;
+    text-align: center;
+    color: #ad1b2e;
+    font-size: 50px;
+    font-family: 'Fredoka One';
+    margin-bottom: 30px;
+}
+#my-account .user-information{
+    height: 80px;
+    border-bottom: 2px solid #d9dee0;
+    line-height: 80px;
+}
+.user-information div{
+    display: inline-block;
+    vertical-align: top;
+}
+.user-inform-pic{
+    height: 100%;
+    width: 80px;
+    background-color: black;
+    margin-right: 20px;
+}
+.user-inform-title{
+    height: 80px;
+    width: 100px;
 }
