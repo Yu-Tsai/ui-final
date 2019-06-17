@@ -97,6 +97,7 @@ $(document).ready(function(){
         $("#dish-page1, #dish-page2").hide();
 
         $(".member-input").hide();
+        $(".sign-up-choose").hide();
         $("#my-account").hide();
 
         orderbtns= $(".order-btns").detach();
@@ -437,14 +438,19 @@ $(document).ready(function(){
         $("#new-user-trigger").css({ color: "#cdcdcd" });
         $(".login-input").show();
         $(".member-input").hide();
+        $(".sign-up-choose").hide();
     });
     $("#new-user-trigger").click(function(){
         $(this).css({ color: "#ad1b2e" });
         $("#login-trigger").css({ color: "#cdcdcd" });
         /*$(".member-input").append(member_btn);*/
         $(".login-input").hide();
-        $(".member-input").show();
+        $(".sign-up-choose").show();
     });
+    $("#member-sign-up").on('click', function () {
+        $(".sign-up-choose").hide();
+        $(".member-input").show();
+    })
     $("#login-btn").on('click', function () {
         $(".member-viewport").hide();
         $("#my-account").show();

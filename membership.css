@@ -55,12 +55,15 @@
     margin-left: 190px;
     cursor: pointer;
 }
+#sign-up-btn div > img{
+    height: 100%;
+    width: 100%;
+}
 #sign-up-btn div:nth-child(1){
     display: inline-block;
     vertical-align: top;
     height: 40px;
     width: 40px;
-    background-color: black;
 }
 #sign-up-btn div:nth-child(2){
     display: inline-block;
@@ -70,7 +73,7 @@
     text-align: center;
     line-height: 60px;
 }
-.member-input, .login-input{
+.member-input, .login-input, .sign-up-choose{
     padding: 20px calc((480px - 300px)/2);
     color: #bbbaba;
     font-family: 'Arial';
@@ -157,12 +160,63 @@
     vertical-align: top;
 }
 .user-inform-pic{
+    height: 40px;
+    width: 40px;
+    margin: 20px 20px;
+}
+.user-inform-pic > img{
     height: 100%;
-    width: 80px;
-    background-color: black;
-    margin-right: 20px;
+    width: 100%;
 }
 .user-inform-title{
     height: 80px;
     width: 100px;
+}
+
+#sign-up-choose-container{
+    height: 270px;
+    width: 100%;
+    border-bottom: 2px solid #f2f2f3;
+    padding-top: 50px;
+}
+.sign-up-choose-btn{
+    height: 50px;
+    width: 275px;
+    border-radius: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+    border: 2px solid #cdcdcd;
+}
+#member-visitor{
+    margin-top: 30px;
+}
+.sign-up-choose-btn div:nth-child(1){
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+    width: 50px;
+    margin-left: 50px;
+}
+.sign-up-choose-btn div > img{
+    height: 100%;
+    width: 100%;
+}
+.sign-up-choose-btn div:nth-child(2){
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 50px;
+    margin-left: 20px;
+    color: #bbbaba;
+}
+.sign-up-choose-btn:hover{    
+    background-color: #bc1f33;
+    color: white;
+    border: 0;
+}
+.sign-up-choose-btn:hover > div:nth-child(2){  
+    color: white;
 }

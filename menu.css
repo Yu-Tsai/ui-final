@@ -866,10 +866,13 @@
     font-family: 'Fredoka One';
     font-size: 40px;
 }
-#modal-contene-picture{
+#modal-content-picture{
     height: 150px;
     /*width: 350px;*/
-    background-color: black;
+}
+#modal-content-picture > img{
+    height: 100%;
+    width: 100%;
 }
 #modal-content-text{
     height: 75px;
@@ -913,5 +916,8 @@
 }
 #modal-qrcode div{
     height: 200px;
-    background-color: black;
+}
+#modal-qrcode div > img{
+    height: 100%;
+    width: 100%;
 }
