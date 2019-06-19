@@ -381,6 +381,7 @@
     line-height: 65px;
     font-size: 33px;
     color: #961e23;
+    font-family: Arial Rounded MT;
 }
 .cart-content{
     border-top: 2px solid #cfd0cf;
@@ -477,16 +478,19 @@
     border-top: 17px solid #df4139;
     border-bottom: 17px solid #df4139;
     border-left: 17px solid #df4139;
+    transform: rotate(26deg);
 }
 #circle1, #circle4{
     border-top: 17px solid #f4a81f;
     border-bottom: 17px solid #f4a81f;
     border-left: 17px solid #f4a81f;
+    transform: rotate(81deg);
 }
 #circle2, #circle5{
     border-top: 17px solid #2598a1;
     border-bottom: 17px solid #2598a1;
     border-left: 17px solid #2598a1;
+    transform: rotate(137deg);
 }
 .random-info{
     width: 600px;
@@ -537,10 +541,128 @@
     color: #252525;
     font-family: 'Arial';
     font-size: 20px;
-
+    cursor: pointer;
 
     background: #2bb7b2;
 }
+
+/*-------------------random-modal--------------------*/
+#random-modal{
+    display: flex;
+    justify-content: center; 
+    position: fixed;
+    z-index: 10;
+    padding: 170px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh; 
+    background-color: rgba(0,0,0,0.8);
+    overflow-y: scroll;
+}
+#random-modal::-webkit-scrollbar{
+    width: 4px;
+    background: transparent;
+}
+#random_modal-win{
+    height: 300px;
+    width: 500px;
+    flex-shrink: 0;
+    background-color: white;
+    border-radius: 5px;
+}
+#random-modal-header{
+    height: 90px;
+    width: 500px;
+    background-color: red;
+    border-radius: 5px 5px 0 0;
+    padding: 20px 20px 0 0;
+}
+#random-modal-close{
+    height: 20px;
+    width: 20px;
+    margin: 0 0 0 460px;
+    cursor: pointer;
+}
+#random-modal-close > img{
+    height: 100%;
+    width: 100%;
+}
+#random-modal-content{
+    height: 210px;
+    width: 500px;
+}
+#random-modal-pic{
+    display: inline-block;
+    vertical-align: 90px;
+    height: 180px;
+    width: 180px;
+    margin: -30px 0 0 30px;
+    /*background-color: blue;*/
+}
+#random-modal-pic > img{
+    height: 100%;
+    width: 100%;
+}
+#random-modal-text{
+    display: inline-block;
+    vertical-align: 90px;
+    height: 155px;
+    width: 200px;
+    margin: 10px 0 0 40px;
+}
+#random-modal-text p:nth-child(1){
+    font-family: Noto Sans TC;
+    font-size: 25px;
+    color: #ae1c2e;
+    font-weight: bold;
+}
+#random-modal-text p:nth-child(2){
+    font-family: Lalezar;
+    color: #5f5f5f;
+}
+#random-modal-text p:nth-child(3){
+    font-family: Noto Sans TC;
+    color: #87817c;
+    line-height: 15px;
+}
+#random-modal-text p:nth-child(4){
+    font-family: Carrois Gothic;
+    color: #5f5f5f;
+    font-weight: bolder;
+    line-height: 40px;
+}
+.random-order-btns{
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+    line-height: 25px;
+    margin: 10px 0px 0 0;
+    font-family: 'Arial';
+    text-align: center;
+}
+.random-amount{
+    width: 40%;
+    display: flex;
+} 
+#random-minus, #random-plus{
+    width: 30%;
+    border: 1px solid #d9dee0;
+    cursor: pointer;
+}
+#random-number{
+    width: 40%;
+    border-top: 1px solid #d9dee0;
+    border-bottom: 1px solid #d9dee0; 
+}
+#random-add-to-cart{
+    width: 55%;
+    color: #ffffff;
+    background: #f5bf4c;
+    cursor: pointer;
+}
+/*-------------------random-modal--------------------*/
+
 /*---------------------------------------------- random old version---*/
 /*
 .method2{
@@ -803,7 +925,8 @@
     overflow: hidden;
 }*/
 #checkout-modal{
-    display: none; 
+    display: flex;
+    justify-content: center;
     position: fixed;
     z-index: 10;
     padding: 170px;
@@ -838,9 +961,9 @@
     display: inline-block;
     vertical-align: top;
     height: 380px;
-    width: 220px;
-    margin-left: 25px;
-    margin-right: 5px;
+    width: 210px;
+    margin-left: 40px;
+    /*margin-right: 0px;*/
 }
 #checkout-close-btn{
     display: inline-block;
@@ -867,7 +990,9 @@
     font-size: 40px;
 }
 #modal-content-picture{
-    height: 150px;
+    height: 127.3px;
+    width: 250px;
+    margin: 0 0 20px 95px;
     /*width: 350px;*/
 }
 #modal-content-picture > img{
@@ -880,9 +1005,16 @@
     text-align: center;
     text-justify: distribute;
     font-size: 13px;
+    line-height: 23px;
 }
-#modal-content-text span:nth-child(1){
-    word-spacing: 5px;
+#modal-content-text p:nth-child(1){
+    word-spacing: 7.8px;
+}
+#modal-content-text p:nth-child(3){
+    letter-spacing: 5px;
+}
+#modal-content-text span{
+    color: #bc1f33;
 }
 #modal-confirm-btn{
     height: 30px;
@@ -901,8 +1033,9 @@
 #modal-order-number{
     height: 60px;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 10px;
+    letter-spacing: 3px;
 }
 #modal-order-number span:nth-child(3){
     color: #bc1f33;
@@ -912,12 +1045,46 @@
     text-align: left;
 }
 #modal-qrcode span{
-
+    letter-spacing: 3px;
 }
 #modal-qrcode div{
-    height: 200px;
+    height: 190px;
+    width: 190px;
+    margin-top: 10px;
 }
 #modal-qrcode div > img{
     height: 100%;
     width: 100%;
+}
+
+/*------------------登入畫面--------------------*/
+#login-modal{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 10;
+    padding: 100px;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh; 
+    background-color: rgba(0,0,0,0.8);
+    overflow-y: scroll;
+}
+#login-modal::-webkit-scrollbar{
+    width: 4px;
+    background: transparent;
+}
+/*------------------登入畫面--------------------*/
+
+.step2-back{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    font-family: Arial Rounded MT;
+    color: #87817d;
 }

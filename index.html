@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lalezar">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Passion One">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Carrois Gothic">
     <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins Medium">-->    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -181,9 +182,9 @@
                         <div class="dish-page-trigger" id="dish-page-trigger1">
                             Beverage
                         </div>
-                        <div class="dish-page-trigger" id="dish-page-trigger2">
+                        <!--<div class="dish-page-trigger" id="dish-page-trigger2">
                             Combo
-                        </div>
+                        </div>-->
                     </div>
                     <div class="menu-content">
                         <div class="dish-page-container">
@@ -245,43 +246,6 @@
                                     <p>HOUSE HOT COFFEE</p>
                                     <p>招牌熱咖啡</p>
                                     <p>$150</p>
-                                </div>
-                            </div>
-                            <div class="dish-page" id="dish-page2" style="background:cornflowerblue;">
-                                <div class="dish-page2-header" style="background: hotpink">
-                                    門市限定 A + B = NT.230
-                                </div>
-                                <div class="dish-page2-content">
-                                    <div class="combo-A">
-                                        <div>A</div>
-                                        <div class="combo-burger">
-                                            <div class="combo-dish" id="combo-burger0">
-                                                <img src="menu/burger0.png">
-                                                <!--<p>SALSA PINEAPPLE</p>
-                                                <p>鳳梨莎莎起司牛肉堡</p>-->
-                                            </div>
-                                            <div class="combo-dish" id="combo-burger1">
-                                                <img src="menu/burger1.png">
-                                                <!--<p>MEX CHILI PEPPER</p>
-                                                <p>墨西香椒起司牛肉漢堡</p>-->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="combo-B">
-                                        <div>B</div>
-                                        <div class="combo-beverage">
-                                            <div class="combo-dish" id="combo-beverage0">
-                                                <img src="menu/drink0.png">
-                                                <!--<p>STIEGL BEER</p>
-                                                <p>奧地利Stiegl啤酒</p>-->
-                                            </div>
-                                            <div class="combo-dish" id="combo-beverage1">
-                                                <img src="menu/drink1.png">
-                                                <!--<p>COLDBREW COFFEE</p>
-                                                <p>冰發酵咖啡</p>-->
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -367,12 +331,12 @@
                 </div>
                 <div class="method2">
                     <div class="circles">
-                        <div id="circle0">
-                            <div id="circle1">
-                                <div id="circle2">
-                                    <div id="circle3">
-                                        <div id="circle4">
-                                            <div id="circle5">
+                        <div id="circle0" class="rotate-circle">
+                            <div id="circle1" class="rotate-circle">
+                                <div id="circle2" class="rotate-circle">
+                                    <div id="circle3" class="rotate-circle">
+                                        <div id="circle4" class="rotate-circle">
+                                            <div id="circle5" class="rotate-circle">
 
                                             </div>
                                         </div>
@@ -411,6 +375,111 @@
                             <img src="menu/random-start.png">
                         </div>
                     </div>-->
+                    <div id="random-modal">
+                        <div id="random_modal-win">
+                            <div id="random-modal-header">
+                                <div id="random-modal-close">
+                                    <img src="./index-object/main-48.png"/>
+                                </div>
+                            </div>
+                            <div id="random-modal-content">
+                                <div id="random-modal-pic">
+                                    <img src="./menu/burger0.png"/>
+                                </div>
+                                <div id="random-modal-text">
+                                    <p>今日幸運餐點</p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <div class="random-order-btns">
+                                        <div class="random-amount">
+                                            <div id="random-minus">-</div>
+                                            <div id="random-number">1</div>
+                                            <div id="random-plus">+</div>
+                                        </div>
+                                        <div id="random-add-to-cart">Add to Cart</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="login-modal">
+                    <div class="member-viewport">
+                        <div class="member-img">
+
+                        </div>
+                        <div class="member-content">
+                            <div class="member-content-header">
+                                <p id="login-trigger">Login</p>
+                                |
+                                <p id="new-user-trigger">New Users</p>
+                            </div>
+                            <div class="login-input">
+                                <div>
+                                    Name<br>
+                                    <input type="text">
+                                </div>
+                                <div>
+                                    Password<br>
+                                    <input type="text">
+                                </div>
+                                <div id="other-login">
+                                    <div id="login-btn">Login</div>
+                                    <div>Or login with</div>
+                                    <div id="login-google">
+                                        <img src="./menu/login-google.png" />
+                                    </div>
+                                    <div id="login-fb">
+                                        <img src="./menu/login-fb.png" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sign-up-choose">
+                                <div id="sign-up-choose-container">
+                                    <div id="member-sign-up" class="sign-up-choose-btn">
+                                        <div>
+                                            <img src="./membership/main-88.png" />
+                                        </div>
+                                        <div>Sign up</div>
+                                    </div>
+                                    <div id="member-visitor" class="sign-up-choose-btn">
+                                        <div>
+                                            <img src="./membership/main-88.png" />
+                                        </div>
+                                        <div>Visitor</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-input">
+                                <div id="sign-up-btn">
+                                    <div>
+                                        <img src="./membership/main-88.png" />
+                                    </div>
+                                    <div>Sign up</div>
+                                </div>
+                                <div>
+                                    Name<br>
+                                    <input type="text">
+                                </div>
+                                <div id="phone-input">
+                                    Phone<br>
+                                    <input type="text">
+                                </div>
+                                <div id="email-input">
+                                    Email<br>
+                                    <input type="text">
+                                </div>
+                                <div>
+                                    Password<br>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step2-back">
+                    <p>〈 Back</p>
                 </div>
             </div>
             <div class="step3">
@@ -481,9 +550,9 @@
                                 <img src="./menu/main-82.png"/>
                             </div>
                             <div id="modal-content-text">
-                                <span>Your order has been processed successfully!</span><br />
-                                <span>您的餐點將在<span>10</span>分鐘後完成，請使用右邊QRcode取餐</span><br />
-                                <span>祝您用餐愉快!</span>
+                                <p>Your order has been processed successfully!</p>
+                                <p>您的餐點將在<span>10分鐘</span>後完成，請使用右邊QRcode取餐</p>
+                                <p>祝您用餐愉快!</p>
                             </div>
                             <div id="modal-confirm-btn">OK</div>
                         </div>
@@ -493,7 +562,7 @@
                                 <span>188880000</span>
                             </div>
                             <div id="modal-qrcode">
-                                <span>取餐QRcode</span>
+                                <p><span>取餐</span>QRcode</p>
                                 <div>
                                     <img src="./menu/qrcode.png"/>
                                 </div>
@@ -558,78 +627,6 @@
         </div>
     </div>
     <div class="member" id="section4">
-        <div class="member-viewport">
-            <div class="member-img">
-
-            </div>
-            <div class="member-content">
-                <div class="member-content-header">
-                    <p id="login-trigger">Login</p>
-                    |
-                    <p id="new-user-trigger">New Users</p>
-                </div>
-                <div class="login-input">
-                    <div>
-                        Name<br>
-                        <input type="text">
-                    </div>
-                    <div>
-                        Password<br>
-                        <input type="text">
-                    </div>
-                    <div id="other-login">
-                        <div id="login-btn">Login</div>
-                        <div>Or login with</div>
-                        <div id="login-google">
-                            <img src="./menu/login-google.png"/>
-                        </div>
-                        <div id="login-fb">
-                            <img src="./menu/login-fb.png" />
-                        </div>
-                    </div>                    
-                </div>
-                <div class="sign-up-choose">
-                    <div id="sign-up-choose-container">
-                        <div id="member-sign-up" class="sign-up-choose-btn">
-                            <div>
-                                <img src="./membership/main-88.png" />
-                            </div>
-                            <div>Sign up</div>
-                        </div>
-                        <div id="member-visitor" class="sign-up-choose-btn">
-                            <div>
-                                <img src="./membership/main-88.png" />
-                            </div>
-                            <div>Visitor</div>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="member-input">
-                    <div id="sign-up-btn">
-                        <div>
-                            <img src="./membership/main-88.png"/>
-                        </div>
-                        <div>Sign up</div>
-                    </div>
-                    <div>
-                        Name<br>
-                        <input type="text">
-                    </div>
-                    <div id="phone-input">
-                        Phone<br>
-                        <input type="text">
-                    </div>
-                    <div id="email-input">
-                        Email<br>
-                        <input type="text">
-                    </div>
-                    <div>
-                        Password<br>
-                        <input type="text">
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="my-account">
             <div id="my-account-title">My Account</div>
             <div class="user-information">
@@ -644,14 +641,14 @@
                     <img src="./membership/main-85.png" />
                 </div>
                 <div class="user-inform-title">電話</div>
-                <div class="user-inform-data">123456789</div>
+                <div class="user-inform-data">0123456789</div>
             </div>
             <div class="user-information">
                 <div class="user-inform-pic">
                     <img src="./membership/main-86.png" />
                 </div>
                 <div class="user-inform-title">電子郵件</div>
-                <div class="user-inform-data">a12345@gmail.com</div>
+                <div class="user-inform-data">aaaa0123456789@gmail.com</div>
             </div>
             <div class="user-information">
                 <div class="user-inform-pic">

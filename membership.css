@@ -7,9 +7,9 @@
 .member-viewport{
     height: 550px;
     width: 800px;
-    border: 2px solid #d9dee0;
+    /*border: 2px solid #d9dee0;*/
     border-radius: 10px;
-    margin: 130px 0px;
+    /*margin: 130px 0px;*/
     flex-shrink: 0;
     display: flex;
 }
@@ -140,12 +140,12 @@
     border: 2px solid #d9dee0;
     border-radius: 10px;
     margin: 130px 0px;
-    padding: 50px 200px;
+    padding: 50px 150px;
 }
 #my-account #my-account-title{
     height: 60px;
     text-align: center;
-    color: #ad1b2e;
+    color: #bc2132;
     font-size: 50px;
     font-family: 'Fredoka One';
     margin-bottom: 30px;
@@ -154,6 +154,7 @@
     height: 80px;
     border-bottom: 2px solid #d9dee0;
     line-height: 80px;
+    font-family: Noto Sans TC;
 }
 .user-information div{
     display: inline-block;
@@ -171,6 +172,13 @@
 .user-inform-title{
     height: 80px;
     width: 100px;
+    color: #8d8d8e;
+    line-height: 90px;
+}
+.user-inform-data{
+    color: #231815;
+    line-height: 90px;
+    margin-left: 20px;
 }
 
 #sign-up-choose-container{

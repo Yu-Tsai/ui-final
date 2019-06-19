@@ -8,7 +8,8 @@ var recommend_dish_num;
 var deg_record= 0;
 var quantity=1;
 var order_price= 0;
-var cart_list=[];
+var cart_list = [];
+var rand_list = [0,1,2,3,4];
 var member_btn;
 const item_name=[
     "SALSA PINEAPPLE",
@@ -40,6 +41,35 @@ const recommend_item_price=[
     100,
     100
 ]
+const random_item_name = [
+    "SALSA PINEAPPLE",
+    "MEX CHILI PEPPER",
+    "CHICKEN BURGER",
+    "CHEESE BURGER",
+    "FRANKFURTER"
+]
+const rand_item_ch_name = [
+    "鳳梨莎莎起司牛肉堡",
+    "墨西香椒起司牛肉堡",
+    "黑膠起司雞腿堡",
+    "黑膠起司牛肉堡",
+    "德意志熱狗堡"
+]
+const rand_item_price = [
+    100,
+    100,
+    100,
+    100,
+    100
+]
+const rand_item_pic = [
+    "./menu/burger0.png",
+    "./menu/burger1.png",
+    "./menu/burger2.png",
+    "./menu/burger3.png",
+    "./menu/burger4.png"
+]
+var rand_get = 0;
 var payment_term;
 
 const d = new Date();
@@ -81,6 +111,34 @@ function changeesection(num){
 function checked(A){
     $("#step-indicator"+A+"").html("✔");
 }
+function send_order() {
+    checked(1);
+    $("#login-modal").show();
+    const hour = d.getHours();
+    const minute = d.getMinutes();
+    $("#date").html("" + day + "," + date + "/" + month + "/" + year + "<br>" + hour + ":" + minute + "");
+
+    for (var i = 0; i < cart_list.length; i++) {
+        $(".order-content").append("<div><p>" + cart_list[i].name + " × " + cart_list[i].num + "</p><p>$" + cart_list[i].price + " </p></div>");
+        order_price += cart_list[i].price;
+    }
+    $("#order-price").html("$" + order_price + "");
+}
+function getmatrix(a,b,c,d,e,f){
+    var aa=Math.round(180*Math.asin(a)/ Math.PI);
+    var bb=Math.round(180*Math.acos(b)/ Math.PI);
+    var cc=Math.round(180*Math.asin(c)/ Math.PI);
+    var dd=Math.round(180*Math.acos(d)/ Math.PI);
+    var deg=0;
+    if(aa==bb||-aa==bb){
+        deg=dd;
+    }else if(-aa+bb==180){
+        deg=180+cc;
+    }else if(aa+bb==180){
+        deg=360-cc||360-dd;
+    }
+    return deg>=360?0:deg;
+}
 
 $(document).ready(function(){
     if(initial==0){
@@ -98,7 +156,10 @@ $(document).ready(function(){
 
         $(".member-input").hide();
         $(".sign-up-choose").hide();
-        $("#my-account").hide();
+
+        $("#random-modal").hide();
+        $("#login-modal").hide();
+        $("#checkout-modal").hide();
 
         orderbtns= $(".order-btns").detach();
         recommend_orderbtns= $(".recommend-order-btns").detach();
@@ -130,43 +191,6 @@ $(document).ready(function(){
     $("#sectionbtn4").click(function(){
         changeesection(4);
     });
-    
-    /*--responsive nav bar start--*/
-    /*
-    $(window).resize(function() {
-        if ($(window).innerWidth() < 1180) {
-            
-            $(".navbtn").css("width", "100%");
-            $(".nav-list").show();
-            $(".navbtn, .navleft, .navright").css({ "flex-direction": "column" });
-            $(".btnL").css({ "border-left": "none", "border-top": "2px solid #961e23" });
-            $(".btnR").css({ "width": "280px", "border-top": "2px solid #961e23" });
-            $(".indicator").hide();
-            for(i=1; i<5; i++){
-                $("#sectionbtn"+i+"").click(function(){
-                   
-                });
-            }
-        }
-        else {
-            $(".navbar").append($(".navbtn").detach());
-            $(".navbtn").css("width", "calc(100vw - 280px)");
-            
-            $(".nav-list").hide();
-            $(".navbtn, .navleft, .navright").css({ "flex-direction": "row" });
-            $(".btnL").css({ "border-top": "none", "border-left": "2px solid #961e23" });
-            $(".btnR").css({ "width": "60px", "border-top": "none"});
-            $(".indicator").show();
-        }
-    });
-    $(".nav-list").click(function(){
-        $(".nav-straight").animate({left: '0px'}, "fast");
-    });
-    $(".cross img").click(function(){
-        $(".nav-straight").animate({left: '-295px'}, "fast");
-    });
-    */
-    /*responsive nav bar end--*/
 
     $(".method-trigger").each(function(index){
         $("#method-trigger"+index+"").hover(function(){
@@ -241,19 +265,6 @@ $(document).ready(function(){
         });
     });
 
-    /*---random rotate start old---*/
-    /*
-    $(".random-cover > img").click(function(){
-        var deg= Math.floor(Math.random()*5)*72;
-        $(".random > img").css({
-            transform: "rotate("+(deg_record+720+deg)+"deg)",
-            transition: "transform 2.5s"
-        });
-        deg_record += 720+deg;
-    });
-    */
-    /*---random ratate end old---*/
-
     $(".dish").on("click", "#plus", function(){
         quantity++;
         $("#number").html(quantity);
@@ -277,20 +288,20 @@ $(document).ready(function(){
         if(merge==false){
             cart_list.push(new item(item_name[dish_num], quantity, (item_price[dish_num]*quantity)));
             var last_element= cart_list[cart_list.length - 1];
-            $("#cart-content").append("<div><div>"+last_element.name+" × "+last_element.num+"</div><div class='item_cancel'>×</div><div>");
+            $(".cart-content").append("<div class=\"in-cart-item\"><div>"+last_element.name+" × "+last_element.num+"</div><div class='item_cancel'>×</div><div>");
         }else{
-            $("#cart-content").empty();
+            $(".cart-content").empty();
             for(var i=0; i<cart_list.length; i++){
-                $("#cart-content").append("<div><div>"+cart_list[i].name+" × "+cart_list[i].num+"</div><div class='item_cancel'>×</div><div>")
+                $(".cart-content").append("<div class=\"in-cart-item\"><div>" + cart_list[i].name + " × " + cart_list[i].num + "</div><div class='item_cancel'>×</div><div>")
             }
         }
 
         quantity= 1;
         $("#number").html(quantity);
     });
-    $("#cart-content").on("click", ".item_cancel", function(){
+    $(".cart-content").on("click", ".item_cancel", function(){
         var temp= this.parentElement;/*something strange*/
-        var i= 0;
+        var i = 0;
         while((temp= temp.previousSibling)!=null){
             i++;
         }
@@ -320,46 +331,133 @@ $(document).ready(function(){
         if(merge==false){
             cart_list.push(new item(recommend_item_name[recommend_dish_num], quantity, (item_price[recommend_dish_num]*quantity)));
             var last_element= cart_list[cart_list.length - 1];
-            $("#recommend-cart-content").append("<div><div>"+last_element.name+" × "+last_element.num+"</div><div class='item_cancel'>×</div><div>");
+            $(".cart-content").append("<div><div>"+last_element.name+" × "+last_element.num+"</div><div class='item_cancel'>×</div><div>");
         }else{
-            $("#recommend-cart-content").empty();
+            $(".cart-content").empty();
             for(var i=0; i<cart_list.length; i++){
-                $("#recommend-cart-content").append("<div><div>"+cart_list[i].name+" × "+cart_list[i].num+"</div><div class='item_cancel'>×</div><div>")
+                $(".cart-content").append("<div><div>"+cart_list[i].name+" × "+cart_list[i].num+"</div><div class='item_cancel'>×</div><div>")
             }
         }
         quantity= 1;
         $("#recommend-number").html(quantity);
     });
-    $("#recommend-cart-content").on("click", ".item_cancel", function(){
-        var temp= this.parentElement;/*something strange*/
+    /*$(".cart-content").on("click", ".item_cancel", function(){
+        var temp= this.parentElement;//something strange
         var i= 0;
         while((temp= temp.previousSibling)!=null){
             i++;
         }
         cart_list.splice(i, 1);
         this.parentElement.remove();
-    });
+    });*/
     /*---random---*/
-    $(".random-dish").click(function(){
-        $(this).css({ border: "2px solid #747373" });
-        $(this).find("img").css({ opacity: "0.3" });
+    $(".random-dish").click(function () {
+        if (rand_list.indexOf($(".random-dish").index(this)) != -1) {
+            $(this).css({ border: "2px solid #747373" });
+            $(this).find("img").css({ opacity: "0.3" });
+            rand_list.splice(rand_list.indexOf($(".random-dish").index(this)), 1);
+            console.log(rand_list);
+        } else {
+            $(this).css({ border: "2px solid #229aa3" });
+            $(this).find("img").css({ opacity: "1" });
+            rand_list.push($(".random-dish").index(this));
+            console.log(rand_list);
+        }
     });
-    $("#random-start").hover(function(){
-        $(this).css({ cursor: "pointer"});
-    }).click(function(){
+    $("#random-start").click(function(){
         deg_record += 720;
-        $(".circles").find("div").css({
+        /*$(".circles").find("div").css({
             transform: "rotate("+deg_record+"deg)",
             transition: "transform 3.5s ease"
-        });
+        });*/
+        $(".rotate-circle").each(function () {
+            var origin_deg = eval('get' + $(this).css('transform')) + deg_record;
+            console.log(origin_deg);
+            $(this).css({
+                transform: "rotate("+origin_deg+"deg)",
+                transition: "transform 3.5s ease"
+            });
+        })
+        rand_get = rand_list[Math.floor(Math.random() * rand_list.length)];
+        setTimeout(function () {
+            /*$("#random-modal").css({
+                "display": "flex",
+                "justify-content": "center"
+            })*/
+            $("#random-modal").show();
+            /*$("#random-modal-pic").append("<img src=\"" + rand_item_pic[rand_get] + "\"\/>");
+            $("#random-modal-pic > img").css({ "height": "100%", "width": "100%" });*/
+            $("#random-modal-pic > img").attr("src", rand_item_pic[rand_get]);
+            $("#random-modal-text p:nth-child(2)").html(random_item_name[rand_get]);
+            $("#random-modal-text p:nth-child(3)").html(rand_item_ch_name[rand_get]);
+            $("#random-modal-text p:nth-child(4)").html("$" + rand_item_price[rand_get]);
+        }, 3500);
     });
-    
+    $("#random-modal").on("click", "#random-plus", function () {
+        quantity++;
+        $("#random-number").html(quantity);
+    });
+    $("#random-modal").on("click", "#random-minus", function () {
+        if (quantity > 1) {
+            quantity--;
+            $("#random-number").html(quantity);
+        }
+    });
+    $("#random-modal").on("click", "#random-add-to-cart", function () {
+        var merge = false;
+        for (var i = 0; i < cart_list.length; i++) {
+            if (random_item_name[rand_get] == cart_list[i].name) {
+                merge = true;
+                cart_list[i].num += quantity;
+                cart_list[i].price += (rand_item_price[rand_get] * quantity);
+                break;
+            }
+        }
+        if (merge == false) {
+            cart_list.push(new item(random_item_name[rand_get], quantity, (rand_item_price[rand_get] * quantity)));
+            var last_element = cart_list[cart_list.length - 1];
+            $(".cart-content").append("<div><div>" + last_element.name + " × " + last_element.num + "</div><div class='item_cancel'>×</div><div>");
+        } else {
+            $(".cart-content").empty();
+            for (var i = 0; i < cart_list.length; i++) {
+                $(".cart-content").append("<div><div>" + cart_list[i].name + " × " + cart_list[i].num + "</div><div class='item_cancel'>×</div><div>")
+            }
+        }
+
+        quantity = 1;
+        $("#random-number").html(quantity);
+        $("#login-modal").show();
+    });
+    $("#random-modal").on("click", "#random-modal-close", function () {
+        $("#random-modal").hide();
+    });
     /*---random---*/
-    /*---step 3 start---*/
-    $(".send-order").click(function(){
-        checked(1);
+    $(".step2-back").on('click', function () {
         $(".step2").hide();
-        $(".step3").show();
+        $(".step1").show();
+        $(".method0, .method1, .method2").hide();
+        $("#step-indicator0").html("1");
+        $(".cart-content").empty();
+        for (var i = 0; i < cart_list.length; i++) {
+            $(".cart-content").append("<div class=\"in-cart-item\"><div>" + cart_list[i].name + " × " + cart_list[i].num + "</div><div class='item_cancel'>×</div><div>");
+        }
+    })
+    $(".cancel-order").on('click', function () {
+        cart_list.splice(0, cart_list.length);
+        $(".cart-content").empty();
+    })
+
+    /*---step 3 start---*/
+    $(".send-order").click(function () {
+        $("#login-modal").show();
+        /*checked(1);
+        //$(".step2").hide();
+        $("#login-modal").show();
+        /*$("#login-modal").css({
+            "display": "flex",
+            "justify-content": "center"
+        })
+        //$(".step3").show();
         /*const d= new Date();
         const year= d.getFullYear();
         const month= d.getMonth()+1;
@@ -374,7 +472,7 @@ $(document).ready(function(){
             "Friday",
             "Saturday"
         ]
-        day = day_name[day];*/
+        day = day_name[day];
         const hour= d.getHours();
         const minute= d.getMinutes();
         $("#date").html(""+day+","+date+"/"+month+"/"+year+"<br>"+hour+":"+minute+"");
@@ -383,7 +481,7 @@ $(document).ready(function(){
             $(".order-content").append("<div><p>"+cart_list[i].name+" × "+cart_list[i].num+"</p><p>$"+cart_list[i].price+" </p></div>");
             order_price += cart_list[i].price;
         }
-        $("#order-price").html("$"+order_price+"");
+        $("#order-price").html("$"+order_price+"");*/
     });
     $("#cancel").on('click', function () {
         location.reload();
@@ -416,12 +514,14 @@ $(document).ready(function(){
         });
     });
     $("#checkout").on('click', function () {
-        $("#checkout-modal").css({
+        $("#checkout-modal").show();
+        /*$("#checkout-modal").css({
             "display": "flex",
             "justify-content": "center"
-        })
+        })*/
     })
     $("#modal-confirm-btn").on('click', function () {
+        $("#checkout-modal").hide();
         /*$("#checkout-modal").css({
             "display": "none"
         })*/
@@ -451,9 +551,26 @@ $(document).ready(function(){
         $(".sign-up-choose").hide();
         $(".member-input").show();
     })
+    $("#member-visitor").on('click', function () {
+        $("#login-modal").hide();
+        $(".step2").hide();
+        $(".step3").show();
+        send_order();
+        //$(".sign-up-choose").hide();
+        //$(".member-input").show();
+    })
     $("#login-btn").on('click', function () {
-        $(".member-viewport").hide();
-        $("#my-account").show();
+        $("#login-modal").hide();
+        $(".step2").hide();
+        $(".step3").show();
+        send_order();
+        //$("#my-account").show();
+    })
+    $("#sign-up-btn").on('click', function () {
+        $("#login-modal").hide();
+        $(".step2").hide();
+        $(".step3").show();
+        send_order();
     })
     /*---login end---*/
 });
