@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Passion One">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Carrois Gothic">
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins Medium">-->    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">    
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="index.js"></script>
@@ -73,13 +73,65 @@
             </div>
             <div class="popular-item-container">
                 <div class="popular-item">
-                    <img src="index-object/popular-item0.png"> 
+                    <div class="popular-img"><img src="index-object/popular-item0.png"></div>
+                    <div class="popular-item-data">
+                        <p>SALSA PINEAPPLE</p>
+                        <p>鳳梨莎莎起司牛肉漢堡</p>
+                        <div class="star"><img src="./index-object/main-26.png"/></div>                        
+                        <div>$100</div>
+                        <div class="popular-item-btn">ORDER NOW</div>
+                    </div>
+                    <div class="popular-item-share">
+                        <div class="love">
+                            <!--<div><img src="./index-object/main-32.png" /></div>-->
+                            <img src="./index-object/main-32.png" />
+                            <p>375</p>
+                        </div>
+                        <div class="share">
+                            <img src="./index-object/main-33.png" />
+                            <p>75</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="popular-item">
-                    <img src="index-object/popular-item1.png"> 
+                    <div class="popular-img"><img src="index-object/popular-item1.png"></div>
+                    <div class="popular-item-data">
+                        <p>CHICKEN BURGER</p>
+                        <p>黑膠起司雞腿堡</p>
+                        <div class="star"><img src="./index-object/main-27.png"/></div>
+                        <div>$100</div>
+                        <div class="popular-item-btn">ORDER NOW</div>
+                    </div>
+                    <div class="popular-item-share">
+                        <div class="love">
+                            <img src="./index-object/main-32.png" />
+                            <p>375</p>
+                        </div>
+                        <div class="share">
+                            <img src="./index-object/main-33.png" />
+                            <p>75</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="popular-item">
-                    <img src="index-object/popular-item2.png">  
+                    <div class="popular-img"><img src="index-object/popular-item2.png"></div>
+                    <div class="popular-item-data">
+                        <p>MEX CHILI PEPPER</p>
+                        <p>墨西香椒起司牛肉堡</p>
+                        <div class="star"><img src="./index-object/main-28.png"/></div>
+                        <div>$100</div>
+                        <div class="popular-item-btn">ORDER NOW</div>
+                    </div>
+                    <div class="popular-item-share">
+                        <div class="love">
+                            <img src="./index-object/main-32.png" />
+                            <p>375</p>
+                        </div>
+                        <div class="share">
+                            <img src="./index-object/main-33.png" />
+                            <p>75</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -379,7 +431,7 @@
                         <div id="random_modal-win">
                             <div id="random-modal-header">
                                 <div id="random-modal-close">
-                                    <img src="./index-object/main-48.png"/>
+                                    <img src="./menu/main-90.png"/>
                                 </div>
                             </div>
                             <div id="random-modal-content">
@@ -410,6 +462,9 @@
 
                         </div>
                         <div class="member-content">
+                            <div id="login-close-btn">
+                                <img src="./menu/main-90.png" />
+                            </div>
                             <div class="member-content-header">
                                 <p id="login-trigger">Login</p>
                                 |
@@ -479,7 +534,8 @@
                     </div>
                 </div>
                 <div class="step2-back">
-                    <p>〈 Back</p>
+                    <!--<p>〈 Back</p>-->
+                    <img src="./menu/main-95.png"/>
                 </div>
             </div>
             <div class="step3">
@@ -529,7 +585,7 @@
                 </div>
                 <div class="order">
                     <div class="order-header">
-                        Order
+                        Order Summary
                     </div>
                     <div class="order-content">
                         
@@ -576,24 +632,34 @@
     </div>
     <div class="order-status" id="section2">
         <div class="order-status-viewport">
-            <div id="order-clock">
-                <img src="./orderstatus/clock.png" />
+            <div class="order-header">
+                <div class="order-clock">
+                    <img src="./orderstatus/clock.png" />
+                </div>
+                <div class="order-title">Order Detail</div>
             </div>
-            <div id="status-head">Order Detail</div>
-            <div class="order-status-content">
-                <p class="status-title status-text">Date</p><p class="status-status status-text">2019 / 05 / 13</p><br />
-                <p class="status-title status-text">Order Number</p><p class="status-status status-text">#188880000</p><br />
-                <p class="status-title status-text">Total Amount</p><p class="status-status status-text">$300</p>
-            </div>
-            <div class="countdown-min">
-                <div class="countdown-text">Minute</div>
-                <div class="countdown-display countdown-min-left">0</div>
-                <div class="countdown-display countdown-min-right">9</div>
-            </div>
-            <div class="countdown-sec">
-                <div class="countdown-text">Second</div>
-                <div class="countdown-display countdown-sec-left">5</div>
-                <div class="countdown-display countdown-sec-right">9</div>
+            <div class="order-status-left">
+                <div class="order-status-content">
+                    <p class="status-title status-text">Date</p><p class="status-status status-text">2019 / 05 / 13</p><br />
+                    <p class="status-title status-text">Order Number</p><p class="status-status status-text">#188880000</p><br />
+                    <p class="status-title status-text">Total Amount</p><p class="status-status status-text">$300</p>
+                </div>
+                <div class="countdown-min">
+                    <div class="countdown-text">Minute</div>
+                    <div class="countdown-display countdown-min-left">0</div>
+                    <div class="countdown-display countdown-min-right">9</div>
+                </div>
+                <div class="countdown-sec">
+                    <div class="countdown-text">Second</div>
+                    <div class="countdown-display countdown-sec-left">5</div>
+                    <div class="countdown-display countdown-sec-right">9</div>
+                </div>
+            </div>            
+            <div class="order-status-right">
+                <div><p><span>取餐</span>QRcode</p></div>
+                <div>
+                    <img src="./menu/qrcode.png" />
+                </div>
             </div>
         </div>
     </div>
@@ -622,7 +688,43 @@
                 </div>
             </div>
             <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d7345.434567866965!2d120.21453357498054!3d22.997421439863107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1z5oiQ5Yqf5aSn5a24!5e0!3m2!1szh-TW!2stw!4v1559581956832!5m2!1szh-TW!2stw"></iframe>
+                <div id="googlemap"></div>
+                <div class="store-info">
+                    <div id="store-info-close-btn">
+                        <img src="./index-object/main-48.png"/>
+                    </div>
+                    <div id="store-info-name">成大育樂店</div>
+                    <div id="store-info-addr">
+                        <p id="store-addr">台南市東區大學路1號</p>
+                        <p id="store-tel">TEL:06-2757575</p>
+                    </div>
+                    <div id="store-info-service">
+                        <div class="store-service-data">
+                            <div>
+                                <img src="./index-object/main-41.png"/>
+                            </div>
+                            <div>SEAT</div>
+                        </div>
+                        <div class="store-service-data">
+                            <div>
+                                <img src="./index-object/main-42.png" />
+                            </div>
+                            <div>Wi-Fi</div>
+                        </div>
+                        <div class="store-service-data">
+                            <div>
+                                <img src="./index-object/main-43.png" />
+                            </div>
+                            <div>PARKING</div>
+                        </div>
+                    </div>
+                    <div id="store-info-open">Opening times</div>
+                    <div id="store-open-time">
+                        <p>Sunday-Thursday  10:00~20:00</p>
+                        <p>Friday-Saturday  10:00~20:00</p>
+                    </div>
+                </div>
+                <!--<iframe src="./map.html"></iframe>-->
             </div>
         </div>
     </div>
@@ -659,6 +761,8 @@
             </div>
         </div>
     </div>
-    
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWu7Z3_2hPeqfVqpny0KYy7e4-higSMCI&callback=initMap&libraries=geometry"></script>
+
 </body>
 </html>

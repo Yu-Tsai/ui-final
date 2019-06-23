@@ -69,6 +69,21 @@ const rand_item_pic = [
     "./menu/burger3.png",
     "./menu/burger4.png"
 ]
+const store_name = [
+    "成大育樂店",
+    "台南東寧店",
+    "台北華山店"
+]
+const store_addr = [
+    "台南市東區大學路1號",
+    "台南市東區東寧路186號",
+    "台北市中正區八德路一段"
+]
+const store_tel = [
+    "06-2757575",
+    "06-1234567",
+    "02-2020202"
+]
 var rand_get = 0;
 var payment_term;
 
@@ -109,10 +124,24 @@ function changeesection(num){
     }
 }
 function checked(A){
-    $("#step-indicator"+A+"").html("✔");
+    $("#step-indicator" + A + "").html("✔");
+    $("#step-indicator" + A + "").css({
+        "color": "#ffffff",
+        "background-color": "#87817d",
+        "border": "2px solid #87817d"
+    })
+    //$("#step-indicator" + A + "").append("<img src=\".\/menu\/main-54.png\"/>");
+}
+function indicator_change(A) {
+    $("#step-indicator" + A + "").css({
+        "background-color": "#bc1f33",
+        "color": "#ffffff",
+        "border": "2px solid #bc1f33"
+    })
 }
 function send_order() {
     checked(1);
+    indicator_change(2);
     $("#login-modal").show();
     const hour = d.getHours();
     const minute = d.getMinutes();
@@ -140,6 +169,108 @@ function getmatrix(a,b,c,d,e,f){
     return deg>=360?0:deg;
 }
 
+//---------------------googlemap---------------------//
+var map;
+var mypos;
+var shoppos = [
+    { lat: 22.9999521, lng: 120.212858 },
+    { lat: 22.9910402, lng: 120.2218868 },
+    { lat: 25.0441303, lng: 121.5272108 }
+];
+var shopname = [
+    "shop1",
+    "shop2"
+];
+//var shopdistance = new google.maps.DistanceMatrixService();
+var shopdistance = new Array();
+var markers = new Array();
+var infowin = new Array();
+var infocontent1 = "<div class=\"infocontent\">" + "<span class=\"infotitle\">"
+var infocontent2 = "</span>" + "<br>" + "<button class=\"infobutton\" type=\"button\">" + "choose" + "</button>" + "</div>";
+var directionsService;
+var directionsDisplay;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('googlemap'), {
+        center: { lat: 22.9999521, lng: 120.212858 },
+        zoom: 15
+    });
+
+    infoWindow = new google.maps.InfoWindow;
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer({
+        preserveViewport: true
+    });
+    directionsDisplay.setMap(map);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            mypos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            map.setCenter(mypos);
+            markers[0] = new google.maps.Marker({
+                position: mypos,
+                map: map
+            });
+
+            $(".store").each(function (index) {
+                $(this).on('click', function () {
+                    directionsService.route({
+                        origin: mypos,
+                        destination: shoppos[index],
+                        travelMode: 'DRIVING'
+                    }, function (result, status) {
+                        for (i = 0; i < markers.length; i++) {
+                            markers[i].setMap(null);
+                        }
+                        if (status == 'OK') {
+                            directionsDisplay.setDirections(result);
+                        } else {
+                            alert(status);
+                        }
+                    });
+                })
+            })
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, infoWindow, map.getCenter());    // Browser doesn't support Geolocation
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, mypos) {
+        infoWindow.setPosition(mypos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+    }
+
+    var i;
+    for (i = 1; i <= shoppos.length; i++) {
+        //(function (info) {
+        infowin[i] = new google.maps.InfoWindow({
+            content: infocontent1 + shopname[i - 1] + infocontent2
+        });
+        //}(infowin[i]));
+        markers[i] = new google.maps.Marker({
+            position: shoppos[i - 1],
+            map: map,
+        });
+        /*(function (info, mark) {
+            markers[i].addListener('click', function () {
+                info.open(map, mark);
+            });
+        }(infowin[i], markers[i]));*/
+    }
+
+    
+}
+//---------------------googlemap---------------------//
+
 $(document).ready(function(){
     if(initial==0){
         /*initial setting*/
@@ -160,6 +291,8 @@ $(document).ready(function(){
         $("#random-modal").hide();
         $("#login-modal").hide();
         $("#checkout-modal").hide();
+
+        $(".store-info").hide();
 
         orderbtns= $(".order-btns").detach();
         recommend_orderbtns= $(".recommend-order-btns").detach();
@@ -206,6 +339,7 @@ $(document).ready(function(){
         checked(0);
         $(".step1").hide();
         $(".step2").show();
+        indicator_change(1);
     }).each(function(index){
         $("#method-trigger"+index+"").click(function(){
             $(".method"+index+"").show();
@@ -437,6 +571,17 @@ $(document).ready(function(){
         $(".step1").show();
         $(".method0, .method1, .method2").hide();
         $("#step-indicator0").html("1");
+        indicator_change(0);
+        $("#step-indicator1").css({
+            "background-color": "",
+            "color": "#87817d",
+            "border": "2px solid #87817d"
+        })
+        /*$("#step-indicator0").css({
+            "background-color": "#bc1f33",
+            "color": "#ffffff",
+            "border": "2px solid #bc1f33"
+        })*/
         $(".cart-content").empty();
         for (var i = 0; i < cart_list.length; i++) {
             $(".cart-content").append("<div class=\"in-cart-item\"><div>" + cart_list[i].name + " × " + cart_list[i].num + "</div><div class='item_cancel'>×</div><div>");
@@ -487,30 +632,34 @@ $(document).ready(function(){
         location.reload();
     })
     /*---step 3 end---*/
-    $(".payment-term").hover(function(){
-        $(this).css({
-            background: "#ffffff",
-            border: "3px solid #f5bf4c",
-            cursor: "pointer"
-        });
-    }, function(){
-        $(".payment-term").each(function(index){
-            if(payment_term!= index){
-                $("#payment"+index+"").css({
+    $(".payment-term").each(function (index) {
+        $("#payment" + index + "").hover(function () {
+            $(this).css({
+                background: "#ffffff",
+                border: "3px solid #f5bf4c"
+            });
+            $("img", this).attr("src", "menu/payment" + index + "h.png");
+        }, function () {
+            if (payment_term != index) {
+                $(this).css({
                     background: "#f3f4f8",
                     border: "3px solid transparent"
                 });
+                $("img", this).attr("src", "menu/payment" + index + ".png");
             }
-        });
-    }).each(function(index){
-        $("#payment"+index+"").click(function(){
-            $("#payment"+payment_term+" > img").attr("src", "menu/payment"+payment_term+".png");
-            $("#payment"+payment_term+"").css({
+        })
+        $("#payment" + index + "").click(function () {
+            $("#payment" + payment_term + " > img").attr("src", "menu/payment" + payment_term + ".png");
+            $("#payment" + payment_term + "").css({
                 background: "#f3f4f8",
                 border: "3px solid transparent"
             });
-            $("#payment"+index+" > img").attr("src", "menu/payment"+index+"h.png");
-            payment_term= index;
+            if (payment_term != index) {
+                $("img", this).attr("src", "menu/payment" + index + "h.png");
+                payment_term = index;
+            } else {
+                payment_term = null;
+            }
         });
     });
     $("#checkout").on('click', function () {
@@ -572,5 +721,29 @@ $(document).ready(function(){
         $(".step3").show();
         send_order();
     })
+    $("#login-close-btn").on('click', function () {
+        $("#login-modal").hide();
+    })
     /*---login end---*/
+
+    //----------------map----------------//
+    /*$(".store").on('click', function () {
+        $(".store-info").show();
+    })*/
+    $(".store").each(function (index) {
+        $(this).on('click', function () {
+            $("#store-info-name").html(store_name[index]);
+            $("#store-addr").html(store_addr[index]);
+            $("#store-tel").html(store_tel[index]);
+            $(".store-info").show();
+        })
+    })
+    $("#store-info-close-btn").on('click', function () {
+        $(".store-info").hide();
+    })
+
+    //--------------------new--------------------//
+    $(".popular-item-btn").on('click', function () {
+        changeesection(1);
+    })
 });

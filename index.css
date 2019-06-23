@@ -19,6 +19,9 @@ body::-webkit-scrollbar-thumb{
     border-radius:5px;
     background:rgba(0, 0, 0, 0);
 }
+body::-webkit-scrollbar{
+    display: none;
+}
 .page0, .page1, .page2, .menu, .location, .order-status, .member{
     height: var(--fullheight);  /*this property should be corrected*/
     width:100vw;
@@ -30,7 +33,7 @@ body::-webkit-scrollbar-thumb{
     background:url("index-object/page0bg.svg");
     background-size: cover;
     text-align: center;
-    padding: 180px 0px 80px 0;
+    padding: 180px 0 80px 0;
 }
 .page0 img{
     height: 100%;
@@ -64,10 +67,16 @@ body::-webkit-scrollbar-thumb{
 .popular-item{
     height: 100%;
     width: 25%;
-    background: grey;
+    background: #ffffff;
+    border: 1px solid #cfd0cf;
+}
+.popular-img{
+    width: 100%;
+    height: 50%;
 }
 .popular-item img{
     width: 100%;
+    height: 100%;
 }
 .page2{
     background:url("index-object/page2bg.svg");
@@ -196,6 +205,86 @@ body::-webkit-scrollbar-thumb{
             font-size: 14px;
         }
     }
+}
+
+.popular-item-data{
+    height: 37.5%;
+    border-bottom: 1px solid #cfd0cf;
+    padding: 5% 0 5% 7.5%;
+}
+.star{
+    height: 20%;
+    width: 45%;
+    margin-bottom: 1%;
+}
+.popular-item-data p{
+    /*margin-bottom: 1%;*/
+    line-height: 30px;
+}
+.popular-item-data p:nth-child(1){
+    font-family: Lalezar;   
+    font-size: 20px;
+    line-height: 15px;
+    color: #bc1f33;
+}
+.popular-item-data p:nth-child(2){
+    font-family: Noto Sans TC;
+}
+.popular-item-data div:nth-child(4){
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    font-family: Passion One;
+    font-size: 20px;
+    line-height: 30px;
+}
+.popular-item-btn{
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    height: 35%;
+    margin-left: 40%;
+    border: 1px solid #bc1f33;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 35px;
+    color: #bc1f33;
+    cursor: pointer;
+    overflow: hidden;
+}
+.popular-item-share{
+   height: 12.5%;
+}
+.love, .share{    
+    display: inline-block;
+    vertical-align: top;
+    padding: 4.5% 15% 4.5% 18%;
+    cursor: pointer;
+}
+.love{
+    height: 100%;
+    width: 49.9%;
+    border-right: 1px solid #cfd0cf;
+}
+.share{
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    width: calc(50.1% - 4px);
+}
+.love img, .share img{
+    display: inline-block;
+    vertical-align: top;
+    height: 2vh;
+    width: 2vh;
+    width: 30%;
+    margin-left: 1%;
+}
+.love p, .share p{    
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    line-height: 15px;
 }
 /*
 Total: 11 css files

@@ -6,41 +6,42 @@
 }
 .order-status-viewport{
     height: 450px;
-    width: 600px;
+    width: 730px;
     border: 2px solid #d9dee0;
     border-radius: 10px;
     margin: 150px 0px;
-    padding: 25px 0px;
+    padding: 58px 70px;
     flex-shrink: 0;
     background-color: white;
     font-family: 'Poppins';
 }
-#status-head{
+.order-title{
     display: inline-block;
     vertical-align: top;
     height: 50px;
-    width: 210px;
-    margin: 30px 0 0 0;
+    /*width: 210px;*/
+    margin: 0 0 0 0;
     /*display: block;*/
     color: #bc1f33;
     font-family: 'Fredoka One';
     font-size: 35px;
     text-align: center;
 }
-#order-clock{
+.order-clock{
     display: inline-block;
+    vertical-align: top;
     height: 50px;
     width: 50px;
-    margin: 30px 20px 0 160px;
+    margin: 0 10px 0 0;
 }
-#order-clock > img{
+.order-clock > img{
     height: 100%;
     width: 100%;
 }
 .order-status-content{
     height: 100px;
-    width: 280px;
-    margin: 40px 0 0 160px;
+    /*width: 280px;*/
+    /*margin: 40px 0 0 0;*/
     border-bottom: 2px solid #d9dee0;
 }
 .status-text{
@@ -49,6 +50,7 @@
 .status-title{
     width: 160px;
     font-weight: bold;
+    margin-left: 5px;
 }
 .status-status{
     width: 120px;
@@ -56,11 +58,11 @@
 }
 .countdown-min, .countdown-sec{
     display: inline-block;
-    height: 130px;
+    height: 120px;
     width: 130px;
 }
 .countdown-min{
-    margin: 20px 0 0 160px;
+    margin: 20px 0 0 5px;
 }
 .countdown-sec{
     margin: 20px 0 0 20px;
@@ -89,4 +91,42 @@
 }
 .countdown-min-right{
     margin: 0 0 0 5px;
+}
+
+.order-status-left{
+    display: inline-block;
+    vertical-align: top;
+    height: 240px;
+    width: 290px;
+    margin: 40px 50px 0 0;
+}
+.order-status-right{
+    display: inline-block;
+    vertical-align: top;
+    width: 242px;
+    margin: 40px 0 0 0;
+    padding-left: 50px;
+    border-left: 2px solid #d9dee0;
+}
+.order-status-right img{
+    height: 100%;
+    width: 100%;
+}
+.order-header{
+    height: 50px;
+    width: 280px;
+}
+.order-status-right p{    
+    font-family: 'Noto Sans TC';
+}
+.order-status-right span{
+    letter-spacing: 3px;
+}
+.order-status-right div:nth-child(1){
+    height: 40px;
+}
+.order-status-right div:nth-child(2){
+    height: 190px;
+    width: 190px;
+    margin-top: 10px;
 }

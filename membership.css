@@ -24,7 +24,7 @@
     height: 100%;
     width: 60%;
     background: #ffffff;
-    padding: 70px 0px;
+    padding: 20px 0 70px 0px;
     border-radius: 0px 8px 8px 0px;
 }
 .member-content-header{
@@ -227,4 +227,15 @@
 }
 .sign-up-choose-btn:hover > div:nth-child(2){  
     color: white;
+}
+
+#login-close-btn{
+    width: 20px;
+    height: 20px;
+    margin: 0 20px 30px 440px;
+    cursor: pointer;
+}
+#login-close-btn > img{
+    height: 100%;
+    width: 100%;
 }
